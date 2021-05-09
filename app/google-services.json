@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "586873452103",
+    "project_id": "cookbook-f840f",
+    "storage_bucket": "cookbook-f840f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:586873452103:android:3844ed0f1ff8c7c5eb6362",
+        "android_client_info": {
+          "package_name": "com.example.cookbook"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "586873452103-o16cleuqro7cnki105bhn6c9jfha744p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDwSxkhLl_Z6ByBSefbMDMF-MtfQN7eVyE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "586873452103-o16cleuqro7cnki105bhn6c9jfha744p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
