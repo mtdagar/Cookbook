@@ -65,11 +65,12 @@ class SignupActivity : AppCompatActivity() {
                             currentUserDb?.child("username")?.setValue(username)
 
                             Toast.makeText(this@SignupActivity, "Registration success!", Toast.LENGTH_SHORT).show()
-
+                            startActivity(Intent(this@SignupActivity, MainActivity::class.java))
                             finish()
 
                         }else{
-                            Toast.makeText(this@SignupActivity, "Registration failed", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this@SignupActivity, it.exception.toString(), Toast.LENGTH_LONG).show()
+                            it.exception.toString()
                         }
                     }
 

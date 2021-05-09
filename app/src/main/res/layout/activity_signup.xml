@@ -108,7 +108,7 @@
         android:paddingBottom="@dimen/_10sdp"
         android:backgroundTint="@color/white"
         android:fontFamily="@font/manrope_regular"
-        android:text="Sign in"
+        android:text="Sign up!"
         android:textAllCaps="false"
         android:textColor="@color/darkGreen"
         app:cornerRadius="@dimen/_50sdp"

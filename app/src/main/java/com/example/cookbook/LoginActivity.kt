@@ -7,6 +7,7 @@ import android.text.TextUtils
 import android.widget.Toast
 import com.example.cookbook.databinding.ActivityLoginBinding
 import com.google.firebase.auth.FirebaseAuth
+import kotlin.math.log
 
 class LoginActivity : AppCompatActivity() {
 
@@ -21,11 +22,12 @@ class LoginActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
 
-
         binding.btnRegister.setOnClickListener{
             val intent = Intent(this@LoginActivity, SignupActivity::class.java)
             startActivity(intent)
         }
+
+        login()
     }
 
     private fun login() {
