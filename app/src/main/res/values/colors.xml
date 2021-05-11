@@ -10,7 +10,10 @@
     <color name="brown">#433232</color>
     <color name="black">#FF000000</color>
     <color name="lightBlack">#212121</color>
+    <color name="gray">#6C6C6C</color>
+    <color name="lightGray">#f6f7fc</color>
     <color name="white">#FFFFFFFF</color>
+
 
     <color name="lightestGreen">#c4dbbf</color>
     <color name="lightGreen">#81c784</color>

@@ -13,4 +13,10 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="ThemeOverlay.Search" parent="Theme.Cookbook">
+        <!-- Primary brand color. -->
+        <item name="android:editTextColor">@color/lightBlack</item>
+        <item name="android:textColorHint">@color/gray</item>
+    </style>
 </resources>

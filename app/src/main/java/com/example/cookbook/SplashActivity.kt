@@ -29,6 +29,11 @@ class SplashActivity : AppCompatActivity() {
             finish()
         }
 
+        binding.btnSkip.setOnClickListener{
+            startActivity(Intent(this@SplashActivity, MainActivity::class.java))
+            finish()
+        }
+
         val currentUser = auth.currentUser
         if(currentUser != null){
             startActivity(Intent(this@SplashActivity, MainActivity::class.java))

@@ -27,11 +27,14 @@ class MainActivity : AppCompatActivity() {
         database = FirebaseDatabase.getInstance()
         databaseReference = database?.reference!!.child("profile")
 
+
+        /*// LOGOUT
         binding.btnLogout.setOnClickListener{
             auth.signOut()
             startActivity(Intent(this@MainActivity, LoginActivity::class.java))
             finish()
         }
+        */
 
     }
 
