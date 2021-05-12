@@ -3,7 +3,11 @@ package com.example.cookbook
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.cookbook.adapter.MainCategoryAdapter
+import com.example.cookbook.adapter.SubCategoryAdapter
 import com.example.cookbook.databinding.ActivityMainBinding
+import com.example.cookbook.entities.Recipes
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 
@@ -17,6 +21,11 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var username: String
     lateinit var email: String
+
+    var arrMainCategory = ArrayList<Recipes>()
+    var arrSubCategory = ArrayList<Recipes>()
+    var mainCategoryAdapter = MainCategoryAdapter()
+    var subCategoryAdapter = SubCategoryAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +44,29 @@ class MainActivity : AppCompatActivity() {
             finish()
         }
         */
+
+        //temp
+        arrMainCategory.add(Recipes(1, "Beef"))
+        arrMainCategory.add(Recipes(2, "Chicken"))
+        arrMainCategory.add(Recipes(3, "Pizza"))
+        arrMainCategory.add(Recipes(4, "Dessert"))
+
+        mainCategoryAdapter.setData(arrMainCategory)
+
+        //temp
+        arrSubCategory.add(Recipes(1, "Beef and butter"))
+        arrSubCategory.add(Recipes(2, "Creampie"))
+        arrSubCategory.add(Recipes(3, "Banana Shake"))
+        arrSubCategory.add(Recipes(4, "Meat loaf"))
+
+        subCategoryAdapter.setData(arrSubCategory)
+
+        binding.rvMainCategory.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        binding.rvMainCategory.adapter = mainCategoryAdapter
+
+        binding.rvSubCategory.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        binding.rvSubCategory.adapter = subCategoryAdapter
+
 
     }
 
