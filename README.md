@@ -2,13 +2,13 @@
 ## Enjoy the art of cooking with these healthy delicious recipes from cookbook.
 
 ## Features
-1. One to one messaging
+1. Fetches new recipes from API
 2. Sign up with E-mail or Google
-3. Add/update profile picture
-4. Unsend messages
+3. Add/save recipes
+4. Youtube integration
 
 ## Performance Features
-1. Fast and safe user datatbase hosted on Firebase
+1. Fast and safe user datatbase saved using Rooms
 2. Fully responsive UI
 
 # Screenshots
