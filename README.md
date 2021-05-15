@@ -3,7 +3,7 @@
 
 ## Features
 1. Fetches new recipes from API
-2. Uses kotlincooroutines
+2. Uses kotlin cooroutines
 3. Sign up with E-mail or Google
 4. Add/save recipes
 5. Youtube integration
