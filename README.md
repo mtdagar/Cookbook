@@ -3,9 +3,10 @@
 
 ## Features
 1. Fetches new recipes from API
-2. Sign up with E-mail or Google
-3. Add/save recipes
-4. Youtube integration
+2. Uses kotlincooroutines
+3. Sign up with E-mail or Google
+4. Add/save recipes
+5. Youtube integration
 
 ## Performance Features
 1. Fast and safe user datatbase saved using Rooms
