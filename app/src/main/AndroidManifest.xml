@@ -14,9 +14,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Cookbook">
-
-        <!--splash screen -->
-        <activity android:name=".SplashActivity"
+        <activity android:name=".DetailActivity"></activity>
+        <!-- splash screen -->
+        <activity
+            android:name=".SplashActivity"
             android:screenOrientation="locked">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,20 +25,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
-        <activity android:name=".LoginActivity"
-            android:screenOrientation="locked"
-            />
-
-        <activity android:name=".SignupActivity"
-            android:screenOrientation="locked"
-            />
-
-        <activity android:name=".MainActivity"
-            android:screenOrientation="locked"
-            />
-
+        <activity
+            android:name=".LoginActivity"
+            android:screenOrientation="locked" />
+        <activity
+            android:name=".SignupActivity"
+            android:screenOrientation="locked" />
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="locked" />
     </application>
 
 </manifest>

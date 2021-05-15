@@ -14,11 +14,13 @@
     <color name="lightGray">#f6f7fc</color>
     <color name="white">#FFFFFFFF</color>
 
-
     <color name="lightestGreen">#c4dbbf</color>
     <color name="lightGreen">#81c784</color>
     <color name="green">#66bb6a</color>
     <color name="darkGreen">#4caf50</color>
     <color name="darkestGreen">#253e24</color>
+
+    <color name="youtube">#C64141</color>
+    <color name="transparent">#00000000</color>
 
 </resources>

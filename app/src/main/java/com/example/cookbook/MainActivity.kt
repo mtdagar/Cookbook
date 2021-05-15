@@ -6,12 +6,18 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cookbook.adapter.MainCategoryAdapter
 import com.example.cookbook.adapter.SubCategoryAdapter
+import com.example.cookbook.database.RecipeDatabase
 import com.example.cookbook.databinding.ActivityMainBinding
+import com.example.cookbook.entities.CategoryItems
+import com.example.cookbook.entities.MealsItems
 import com.example.cookbook.entities.Recipes
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import kotlinx.android.synthetic.main.activity_detail.*
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.launch
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     lateinit var binding: ActivityMainBinding
 
@@ -22,8 +28,9 @@ class MainActivity : AppCompatActivity() {
     lateinit var username: String
     lateinit var email: String
 
-    var arrMainCategory = ArrayList<Recipes>()
-    var arrSubCategory = ArrayList<Recipes>()
+    var arrMainCategory = ArrayList<CategoryItems>()
+    var arrSubCategory = ArrayList<MealsItems>()
+
     var mainCategoryAdapter = MainCategoryAdapter()
     var subCategoryAdapter = SubCategoryAdapter()
 
@@ -36,6 +43,10 @@ class MainActivity : AppCompatActivity() {
         database = FirebaseDatabase.getInstance()
         databaseReference = database?.reference!!.child("profile")
 
+        getDataFromDb()
+
+        mainCategoryAdapter.setClickListener(onCLicked)
+        subCategoryAdapter.setClickListener(onCLickedSubItem)
 
         /*// LOGOUT
         binding.btnLogout.setOnClickListener{
@@ -44,30 +55,52 @@ class MainActivity : AppCompatActivity() {
             finish()
         }
         */
+    }
 
-        //temp
-        arrMainCategory.add(Recipes(1, "Beef"))
-        arrMainCategory.add(Recipes(2, "Chicken"))
-        arrMainCategory.add(Recipes(3, "Pizza"))
-        arrMainCategory.add(Recipes(4, "Dessert"))
+    private val onCLicked  = object : MainCategoryAdapter.OnItemClickListener{
+        override fun onClicked(categoryName: String) {
+            getMealDataFromDb(categoryName)
+        }
+    }
 
-        mainCategoryAdapter.setData(arrMainCategory)
+    private val onCLickedSubItem  = object : SubCategoryAdapter.OnItemClickListener{
+        override fun onClicked(id: String) {
+            var intent = Intent(this@MainActivity,DetailActivity::class.java)
+            intent.putExtra("id",id)
+            startActivity(intent)
+        }
+    }
 
-        //temp
-        arrSubCategory.add(Recipes(1, "Beef and butter"))
-        arrSubCategory.add(Recipes(2, "Creampie"))
-        arrSubCategory.add(Recipes(3, "Banana Shake"))
-        arrSubCategory.add(Recipes(4, "Meat loaf"))
+    private fun getDataFromDb(){
+        launch {
+            this.let {
+                var cat = RecipeDatabase.getDatabase(this@MainActivity).recipeDao().getAllCategory()
+                arrMainCategory = cat as ArrayList<CategoryItems>
+                arrMainCategory.reverse()
 
-        subCategoryAdapter.setData(arrSubCategory)
-
-        binding.rvMainCategory.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        binding.rvMainCategory.adapter = mainCategoryAdapter
-
-        binding.rvSubCategory.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        binding.rvSubCategory.adapter = subCategoryAdapter
+                getMealDataFromDb(arrMainCategory[0].strcategory)
+                mainCategoryAdapter.setData(arrMainCategory)
+                rv_main_category.layoutManager = LinearLayoutManager(this@MainActivity,LinearLayoutManager.HORIZONTAL,false)
+                rv_main_category.adapter = mainCategoryAdapter
+            }
 
 
+        }
+    }
+
+    private fun getMealDataFromDb(categoryName:String){
+        //tvCategory.text = "$categoryName Category"
+        launch {
+            this.let {
+                var cat = RecipeDatabase.getDatabase(this@MainActivity).recipeDao().getSpecificMealList(categoryName)
+                arrSubCategory = cat as ArrayList<MealsItems>
+                subCategoryAdapter.setData(arrSubCategory)
+                rv_sub_category.layoutManager = LinearLayoutManager(this@MainActivity,LinearLayoutManager.HORIZONTAL,false)
+                rv_sub_category.adapter = subCategoryAdapter
+            }
+
+
+        }
     }
 
     private fun loadProfile() {
